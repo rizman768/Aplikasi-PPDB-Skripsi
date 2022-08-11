@@ -47,6 +47,7 @@ class ProfilController extends Controller
             'agama' => $request->agama,
             'tempat_tinggal' => $request->tempat_tinggal,
             'no_hp' => $request->hp,
+            'persyaratan' => 0,
         ]);
 
         return redirect()->route('profile', auth()->user()->id)->with('success','Biodata Berhasil ditambahkan');
@@ -84,6 +85,9 @@ class ProfilController extends Controller
     public function edit_persyaratan($id){
         $user = User::where('id', $id)->first();
 
+        if ( $user->biodata == NULL) {
+            return view('user.tambah_biodata');
+        }
         return view('user.editpersyaratan')->with(compact('user'));
     }
 

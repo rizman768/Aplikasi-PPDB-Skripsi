@@ -19,7 +19,7 @@
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header">
-                                        <div class="logo text-center my-4"><img src="{{asset('asset1/assets/img/logo-pondok.png')}}" width="209px" height="41px" alt="Logo Viana" class="img-responsive logo" width="200" ></div>
+                                        <div class="logo text-center my-4"><a href="/"><img src="{{asset('asset1/assets/img/logo-pondok.png')}}" width="209px" height="41px" alt="Logo Viana" class="img-responsive logo" width="200"></a></div>
                                         <h3 class="text-center font-weight-light my-4">Login</h3>
                                     </div>
                                     <div class="card-body">
@@ -48,9 +48,12 @@
                                                 <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
                                                 <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                             </div>
-                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.html">Forgot Password?</a>
-                                                <a> <button class="btn btn-primary" type="submit">Login</button></a>
+                                            <div class="text-center mt-4 mb-0">
+                                            {{-- <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                                <a class="small" href="password.html">Forgot Password?</a> --}}
+                                                <div class="d-grid">
+                                                    <a> <button class="btn btn-primary" type="submit">Login</button></a>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>

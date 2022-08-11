@@ -70,8 +70,12 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-                All Rights Reserved by Xtreme Admin. Designed and Developed by <a
-                    href="https://www.wrappixel.com">WrapPixel</a>.
+                <div class="text-muted">Copyright &copy; Pondok Yatim & Dhuafa Yasssin As-Salam</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

@@ -3,21 +3,32 @@
 @section('content')
     <div class="page-breadcrumb">
         <div class="row align-items-center">
-            <div class="col-5">
+            <div class="col-8">
                 <h4 class="page-title">Form {{ $user->biodata->full_name }}</h4>
                 <div class="d-flex align-items-center">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/admin-dashboard">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="/daftarsantri">Daftar Calon Santri</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Form Biodata</li>
+                            <li class="breadcrumb-item active" aria-current="page">Form Biodata {{ $user->biodata->full_name}}</li>
                         </ol>
                     </nav>
                 </div>
             </div>
-            <div class="col-7">
+            <div class="col-2">
                 <div class="text-end upgrade-btn">
-                    <button href="/detailsantri/{{$user->biodata->id}}" class="btn btn-success text-white" id="btn" onclick="myFunction()">Sudah Lengkap</a>
+                     <a href="/cetak_form/{{ $user->biodata->id }}" class="btn btn-danger text-white" target="_blank">Cetak Form</a>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="text-end upgrade-btn">
+                    @if ($user->notif == NULL)
+                        <form method="POST" action="/acc">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $user->biodata->id }}">
+                            <button type="submit" class="btn btn-success text-white">Sudah Lengkap</button>
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>
@@ -33,7 +44,7 @@
         <!-- Start Page Content -->
         <!-- ============================================================== -->
         <!-- Row -->
-        <div class="row">
+        <div class="row">               
             <!-- Column -->
             <div class="col-lg-4 col-xlg-3 col-md-5">
                 <div class="card">

@@ -12,7 +12,11 @@
                         <div class="panel">
                             <div class="panel-heading">
                                 <div class="right">
-                                   <a class="btn btn-secondary" href="/profile/{{auth()->user()->id}}"> Back</a>
+                                    @if (auth()->user()->role_id == 1)
+                                        <a class="btn btn-secondary" href="/daftarsantri"> Back</a>
+                                    @else 
+                                        <a class="btn btn-secondary" href="/profile/{{auth()->user()->id}}"> Back</a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="body">

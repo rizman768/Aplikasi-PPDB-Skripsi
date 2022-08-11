@@ -40,7 +40,11 @@ class User extends Authenticatable
     }
 
     public function biodata(){
-        return $this->hasOne(Biodata::class, 'user_id');   
+        return $this->hasOne(Biodata::class, 'user_id', 'id');   
+    }
+
+    public function notif(){
+        return $this->hasOne(Notif::class, 'user_id');   
     }
 
     /**

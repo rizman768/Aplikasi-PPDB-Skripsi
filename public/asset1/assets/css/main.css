@@ -41,6 +41,7 @@ th {
 
 footer {
   position: absolute;
+  text-align: center!important;
   bottom: 0;
   right: 0;
   padding-top: 15px;

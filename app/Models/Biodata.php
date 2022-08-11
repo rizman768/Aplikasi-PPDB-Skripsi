@@ -10,12 +10,14 @@ class Biodata extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id','full_name','jenis_kelamin','nik','ttl','alamat','agama','tempat_tinggal','no_hp', 'foto', 'akte', 'kk', 'ktp', 'sktm',  
+        'user_id','full_name','jenis_kelamin','nik','ttl','alamat','agama','tempat_tinggal','no_hp', 'foto', 'akte', 'kk', 'ktp', 'sktm', 'persyaratan',  
     ];
 
     public function user(){
-        return $this->belongsTo(User::class, 'user_id', 'name');
+        return $this->belongsTo(User::class, 'id', 'user_id', 'name');
     }
+
+    
 
     public function getFoto(){
         if ($this->foto) {

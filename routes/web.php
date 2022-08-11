@@ -18,16 +18,19 @@ use App\Http\Controllers\ProfilController;
 */
 
 Route::get('/', function () {
-    return redirect('index');
+    return redirect('dashboard');
 });
 
-Route::get('index', [DashboardController::class, 'index'])->name('index');
-Route::get('dashboard', [DashboardController::class, 'dashboard']);
+
+Route::get('dashboard', [DashboardController::class, 'index']);
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('user_login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::get('register', [AuthController::class, 'register']);
 Route::post('user_register', [AuthController::class, 'user_registration']);
+Route::get('daftar-santri', [DashboardController::class, 'daftar_santri']);
+Route::get('search', [DashboardController::class, 'search']);
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('profile/{id}', [ProfilController::class, 'biodata'])->name('profile');
@@ -39,12 +42,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('editpersyaratan/{id}', [ProfilController::class, 'edit_persyaratan']);
     Route::post('updatepersyaratan', [ProfilController::class, 'update_persyaratan']);
 
-    
+    Route::get('index', [DashboardController::class, 'index'])->name('index');
+
     Route::middleware(['cekrole:1'])->group(function () {
         Route::get('admin-dashboard', [AdminController::class, 'index']);
         Route::get('manajemenuser', [AdminController::class, 'manajemen_user']);
         Route::get('daftarsantri', [AdminController::class, 'daftar_santri']);
-        Route::get('detailsantri/{id}', [AdminController::class, 'detail_santri']);
+        Route::get('detailsantri/{id}', [AdminController::class, 'detail_santri'])->name('detailsantri');
+        Route::post('acc', [DashboardController::class, 'persyaratan']);
+        Route::get('cetak_form/{id}', [AdminController::class, 'cetak_pdf']);
+        Route::get('cari', [AdminController::class, 'search']);
     });
 });
   

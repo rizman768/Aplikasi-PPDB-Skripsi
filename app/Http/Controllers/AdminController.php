@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Biodata;
+use App\Models\Notif;
 use Illuminate\Http\Request;
+use PDF;
 
 class AdminController extends Controller
 {
     public function index(){
-        return view('admin.admin_dashboard');
+        $user = User::count();
+        $notif = Notif::count();
+        $santri = Biodata::count();
+        return view('admin.admin_dashboard', compact('user', 'notif', 'santri'));
     }
 
     public function manajemen_user(){
@@ -34,5 +39,22 @@ class AdminController extends Controller
         $biodata = Biodata::where('id', $id)->delete();
 
         return redirect()->route('manajemenuser')->with('success','Akun telah Terhapus');
+    }
+
+    public function cetak_pdf($id)
+    {
+    	$biodata = Biodata::where('id', $id)->first();
+        return view('admin.cetak_pdf', compact('biodata'));
+    	// $pdf = PDF::loadview('admin.cetak_pdf',['biodata'=>$biodata])->setPaper('A4','potrait');
+    	// // return $pdf->download('form-santri-pdf');
+        // return $pdf->Stream();
+    }
+
+    public function search(Request $request){
+        $cari = $request->cari;
+        $biodata = Biodata::where('full_name', 'like', "%".$request->cari."%")->paginate();
+
+        // mengambil data terakhir dan pagination 10 list
+        return view('admin.daftar_santri',['biodata' => $biodata])->with('i', (request()->input('page', 1) - 1) * 10);
     }
 }
