@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('notifs', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->nullabel();
-            $table->string('notif')->nullabel();
+            $table->bigInteger('user_id')->nullable();
+            $table->string('notif')->nullable();
             $table->boolean('persyaratan')->default(0);
             $table->timestamps();
         });

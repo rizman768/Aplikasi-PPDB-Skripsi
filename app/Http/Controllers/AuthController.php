@@ -6,6 +6,7 @@ use Session;
 use Validator;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\BIodata;
 
 use Illuminate\Http\Request;
 
@@ -51,5 +52,13 @@ class AuthController extends Controller
         ]);
 
         return redirect()->route('login')->with('success','Akun Anda Berhasil dibuat');
+    }
+
+    public function delete($id)
+    {
+        $user = User::where('id', $id)->delete();
+        $biodata = Biodata::where('user_id', $id)->delete();
+
+        return redirect('manajemenuser')->with('success','Akun telah Terhapus');
     }
 }

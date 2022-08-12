@@ -29,16 +29,16 @@ class AdminController extends Controller
     }
 
     public function detail_santri($id){
-        $user = User::with('biodata')->where('id', $id)->first();
+        $biodata = Biodata::where('id', $id)->first();
 
-        return view('admin.detail_santri')->with(compact('user'));
+        return view('admin.detail_santri')->with(compact('biodata'));
     }
 
     public function delete_biodata($id)
     {
         $biodata = Biodata::where('id', $id)->delete();
 
-        return redirect()->route('manajemenuser')->with('success','Akun telah Terhapus');
+        return redirect('daftarsantri')->with('success','Form telah Terhapus');
     }
 
     public function cetak_pdf($id)

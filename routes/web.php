@@ -52,6 +52,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('acc', [DashboardController::class, 'persyaratan']);
         Route::get('cetak_form/{id}', [AdminController::class, 'cetak_pdf']);
         Route::get('cari', [AdminController::class, 'search']);
+        Route::post('deleteuser/{id}', [AuthController::class, 'delete']);
+        Route::post('deletebiodata/{id}', [AdminController::class, 'delete_biodata']);
     });
 });
   

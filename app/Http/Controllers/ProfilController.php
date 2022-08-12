@@ -47,7 +47,6 @@ class ProfilController extends Controller
             'agama' => $request->agama,
             'tempat_tinggal' => $request->tempat_tinggal,
             'no_hp' => $request->hp,
-            'persyaratan' => 0,
         ]);
 
         return redirect()->route('profile', auth()->user()->id)->with('success','Biodata Berhasil ditambahkan');

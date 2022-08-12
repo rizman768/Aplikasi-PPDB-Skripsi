@@ -62,13 +62,31 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>{{auth()->user()->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<span class="text-danger">
+									@if (auth()->user()->biodata == NULL or auth()->user()->biodata->foto == NULL)
+										*
+									@endif
+								</span>
+								<span>{{auth()->user()->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								@if(auth()->user()->role_id == 1)
 								<li><a href="/admin-dashboard"><i class="lnr lnr-home"></i> <span>Admin Dashboard</span></a></li>
 								@endif
-								<li><a href="/profile/{{auth()->user()->id}}"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
-								<li><a href="/editpersyaratan/{{auth()->user()->id}}"><i class="lnr lnr-user"></i> <span>Persyaratan</span></a></li>
+								<li><a href="/profile/{{auth()->user()->id}}"><i class="lnr lnr-user"></i> <span>My Profile</span>
+								<span class="text-danger">
+									@if (auth()->user()->biodata == NULL)
+										*
+									@endif
+								</span></a></li>
+								<li><a href="/editpersyaratan/{{auth()->user()->id}}"><i class="lnr lnr-user"></i> <span>Persyaratan</span>
+								<span class="text-danger">
+									@if (auth()->user()->biodata !== NULL)
+										@if (auth()->user()->biodata->foto == NULL or auth()->user()->biodata->kk == NULL or auth()->user()->biodata->ktp == NULL or auth()->user()->biodata->akte == NULL or auth()->user()->biodata->sktm == NULL)
+											*
+										@endif
+									@endif
+								</span></a></li>
 								<li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
 						</li>
