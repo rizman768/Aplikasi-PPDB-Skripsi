@@ -19,7 +19,7 @@
             <div style="text-align:justify; margin-top: 20px">
                 <img src="{{asset('asset/assets/images/logo-icon.png')}}" style="width: 78px; height: 80px; float:left; margin:0 8px 4px 0;"/>
                 <p style="text-align: center; line-height: 20px">
-                <span style="font-size: 28px;"><strong>Pondok Yatim dan Dhuafa <br>Yasin-Assalam</strong></span><br/>
+                <span style="font-size: 28px;"><strong>Pondok Yatim dan Dhuafa <br>Yasin As-salam</strong></span><br/>
                 <span style="font-size: 12px">Jalan Natawijaya No.9 Rw03 Kelurahan Pungkur, Kecamatan Regol, Kota Bandung, Jawa Barat, 40251</span><br/>
                 </p>
             </div>

@@ -4,13 +4,10 @@
     <div class="main">
         <div class="main-content">
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Edit Biodata</h1>
-                <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active"></li>
-                </ol>
                 <div class="row">
-                        <div class="panel">
+                    <div class="panel">
                             <div class="panel-heading">
+                                <h1 class="mt-4">Edit Biodata</h1>
                                 <div class="right">
                                     @if (auth()->user()->role_id == 1)
                                         <a class="btn btn-secondary" href="/daftarsantri"> Back</a>
@@ -19,18 +16,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="body">
-                                @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <strong>Kolom Tidak Boleh Kosong</strong><br><br>
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                
+                            <div class="panel-body">
                                 <form action="/updatebiodata" method="POST">
                                     @csrf
                                  
@@ -39,8 +25,11 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <strong>Full Name :</strong>
+                                                <strong>Nama Lengkap :</strong>
                                                 <input type="text" name="nama" class="form-control" value="{{ $biodata->full_name }}">
+                                                @if ($errors->has('nama'))
+                                                    <span class="text-danger">{{ $errors->first('nama') }}</span>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -56,24 +45,36 @@
                                             <div class="form-group">
                                                 <strong>NIK :</strong>
                                                 <input type="text" name="nik" class="form-control" value="{{ $biodata->nik }}">
+                                                @if ($errors->has('nik'))
+                                                    <span class="text-danger">{{ $errors->first('nik') }}</span>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <strong>Tempat, Tanggal Lahir :</strong>
                                                 <input type="text" name="ttl" class="form-control" value="{{ $biodata->ttl }}">
+                                                @if ($errors->has('ttl'))
+                                                    <span class="text-danger">{{ $errors->first('ttl') }}</span>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <strong>Alamat :</strong>
                                                 <textarea class="form-control" style="height:150px" name="alamat" value="{{ $biodata->alamat }}"></textarea>
+                                                @if ($errors->has('alamat'))
+                                                    <span class="text-danger">{{ $errors->first('alamat') }}</span>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <strong>Agama :</strong>
                                                 <input type="text" name="agama" class="form-control" value="{{ $biodata->agama }}">
+                                                @if ($errors->has('agama'))
+                                                    <span class="text-danger">{{ $errors->first('agama') }}</span>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -91,17 +92,19 @@
                                             <div class="form-group">
                                                 <strong>Nomor Handphone :</strong>
                                                 <input type="text" name="hp" class="form-control" value="{{ $biodata->no_hp }}">
+                                                @if ($errors->has('hp'))
+                                                    <span class="text-danger">{{ $errors->first('hp') }}</span>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
                                     </div>
-                                 
                                 </form>
                             </div>
-                        </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>

@@ -41,6 +41,7 @@
                                     <th>Tempat, Tanggal Lahir</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Alamat</th>
+                                    <th>Status</th>
                                     <th>Option</th>
                                 </tr>
                             </thead>
@@ -54,6 +55,7 @@
                                     <td>{{ $bio->ttl }}</td>
                                     <td>{{ $bio->jenis_kelamin}}</td>
                                     <td>{{ $bio->alamat }}</td>
+                                    <td>{{ $bio->status }}</td>
                                     <td>
                                         <form action="/deletebiodata/{{$bio->id}}" method="POST">
                                             <a class="btn btn-info btn-sm" href="/detailsantri/{{$bio->id}}">Show</a>

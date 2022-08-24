@@ -25,6 +25,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+                @if (session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success')}}
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-body">
                         <table class="table table-striped">

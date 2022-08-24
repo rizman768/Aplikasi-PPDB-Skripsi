@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('kk')->nullable();
             $table->string('ktp')->nullable();
             $table->string('sktm')->nullable();
+            $table->string('status')->default('Belum Lengkap/Belum Verifikasi');
         });
     }
 

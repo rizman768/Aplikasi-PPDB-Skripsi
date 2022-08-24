@@ -30,6 +30,8 @@ Route::get('register', [AuthController::class, 'register']);
 Route::post('user_register', [AuthController::class, 'user_registration']);
 Route::get('daftar-santri', [DashboardController::class, 'daftar_santri']);
 Route::get('search', [DashboardController::class, 'search']);
+Route::get('panduan', [DashboardController::class, 'panduan']);
+Route::get('tentang-pondok', [DashboardController::class, 'tentang_pondok']);
 
 
 Route::middleware(['auth'])->group(function () {
@@ -42,17 +44,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('editpersyaratan/{id}', [ProfilController::class, 'edit_persyaratan']);
     Route::post('updatepersyaratan', [ProfilController::class, 'update_persyaratan']);
 
-    Route::get('index', [DashboardController::class, 'index'])->name('index');
-
     Route::middleware(['cekrole:1'])->group(function () {
         Route::get('admin-dashboard', [AdminController::class, 'index']);
         Route::get('manajemenuser', [AdminController::class, 'manajemen_user']);
+        Route::get('edituser/{id}', [AdminController::class, 'edit_user']);
+        Route::post('updateuser', [AdminController::class, 'update_user']);
         Route::get('daftarsantri', [AdminController::class, 'daftar_santri']);
         Route::get('detailsantri/{id}', [AdminController::class, 'detail_santri'])->name('detailsantri');
         Route::post('acc', [DashboardController::class, 'persyaratan']);
         Route::get('cetak_form/{id}', [AdminController::class, 'cetak_pdf']);
         Route::get('cari', [AdminController::class, 'search']);
-        Route::post('deleteuser/{id}', [AuthController::class, 'delete']);
+        Route::post('deleteuser/{id}', [AdminController::class, 'delete']);
         Route::post('deletebiodata/{id}', [AdminController::class, 'delete_biodata']);
     });
 });

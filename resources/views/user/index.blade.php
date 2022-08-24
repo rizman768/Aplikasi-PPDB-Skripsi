@@ -35,62 +35,68 @@
 				</div>
 				<form class="navbar-form navbar-left" action="/search" method="GET">
 					<div class="input-group">
-						<input type="text" value="" class="form-control" name="cari" placeholder="Search dashboard...">
+						<input type="text" value="" class="form-control" name="cari" placeholder="Search Calon Santri...">
 						<span class="input-group-btn"><button type="submit" class="btn btn-primary">Go</button></span>
 					</div>
 				</form>
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<x-Notification/>
-							<ul class="dropdown-menu notifications">
-								@if (auth()->user()->notif !== NULL)
-									@if (auth()->user()->notif->persyaratan == 1)
-										<li><a href="#" class="notification-item"><span class="dot bg-success"></span>Persyaratan Sudah Di ACC, Silahkan Tunggu Instruksi Selanjutnya</a></li>	
-									@endif	
-								@endif
-								<li><a href="#" class="more">See all notifications</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="lnr lnr-question-circle"></i> <span>Help</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Basic Use</a></li>
-								<li><a href="#">Working With Data</a></li>
-								<li><a href="#">Security</a></li>
-								<li><a href="#">Troubleshooting</a></li>
+								<li><a href="/tentang-pondok">Tentang Pondok</a></li>
+								<li><a href="/panduan">Panduan Pendaftaran Santri Baru</a></li>
+								<li><a href="daftar-santri">Daftar Calon Santri</a></li>
 							</ul>
 						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<span class="text-danger">
-									@if (auth()->user()->biodata == NULL or auth()->user()->biodata->foto == NULL)
-										*
+						@if (Auth::check())
+							<li class="dropdown">
+								<x-Notification/>
+								<ul class="dropdown-menu notifications">
+									@if (auth()->user()->notif !== NULL)
+										@if (auth()->user()->notif->persyaratan == 1)
+											<li><a href="#" class="notification-item"><span class="dot bg-success"></span>Persyaratan Sudah Di ACC, Silahkan Tunggu Instruksi Selanjutnya</a></li>	
+										@endif	
 									@endif
-								</span>
-								<span>{{auth()->user()->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
-							<ul class="dropdown-menu">
-								@if(auth()->user()->role_id == 1)
-								<li><a href="/admin-dashboard"><i class="lnr lnr-home"></i> <span>Admin Dashboard</span></a></li>
-								@endif
-								<li><a href="/profile/{{auth()->user()->id}}"><i class="lnr lnr-user"></i> <span>My Profile</span>
-								<span class="text-danger">
-									@if (auth()->user()->biodata == NULL)
-										*
-									@endif
-								</span></a></li>
-								<li><a href="/editpersyaratan/{{auth()->user()->id}}"><i class="lnr lnr-user"></i> <span>Persyaratan</span>
-								<span class="text-danger">
-									@if (auth()->user()->biodata !== NULL)
-										@if (auth()->user()->biodata->foto == NULL or auth()->user()->biodata->kk == NULL or auth()->user()->biodata->ktp == NULL or auth()->user()->biodata->akte == NULL or auth()->user()->biodata->sktm == NULL)
+									<li><a href="#" class="more">See all notifications</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<span class="text-danger">
+										@if (auth()->user()->biodata == NULL or auth()->user()->biodata->foto == NULL)
 											*
 										@endif
+									</span>
+									<span>{{auth()->user()->name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+								<ul class="dropdown-menu">
+									@if(auth()->user()->role_id == 1)
+									<li><a href="/admin-dashboard"><i class="lnr lnr-home"></i> <span>Admin Dashboard</span></a></li>
 									@endif
-								</span></a></li>
-								<li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
-							</ul>
-						</li>
-					</ul>
+									<li><a href="/profile/{{auth()->user()->id}}"><i class="lnr lnr-user"></i> <span>My Profile</span>
+									<span class="text-danger">
+										@if (auth()->user()->biodata == NULL)
+											*
+										@endif
+									</span></a></li>
+									<li><a href="/editpersyaratan/{{auth()->user()->id}}"><i class="lnr lnr-user"></i> <span>Persyaratan</span>
+									<span class="text-danger">
+										@if (auth()->user()->biodata !== NULL)
+											@if (auth()->user()->biodata->foto == NULL or auth()->user()->biodata->kk == NULL or auth()->user()->biodata->ktp == NULL or auth()->user()->biodata->akte == NULL or auth()->user()->biodata->sktm == NULL)
+												*
+											@endif
+										@endif
+									</span></a></li>
+									<li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+								</ul>
+							</li>
+					</ul>	
+						@else
+							<ul class="navbar-btn navbar-btn-right">
+								<a class="btn btn-success update-pro" href="/login" title="pembuatan akun"><i class="fa fa-rocket"></i> <span>PENDAFTARAN AKUN</span></a>
+							</ul>	
+						@endif
+					
 				</div>
 			</div>
 		</nav>

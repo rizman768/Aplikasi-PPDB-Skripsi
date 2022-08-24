@@ -23,26 +23,31 @@
                                         <h3 class="text-center font-weight-light my-4">Login</h3>
                                     </div>
                                     <div class="card-body">
-                                        @if (session()->has('error'))
-                                            <div class="alert alert-danger">
-                                                {{ session()->get('error')}}
-                                            </div>
-                                        @endif
                                         @if (session()->has('success'))
                                             <div class="alert alert-success">
                                                 {{ session()->get('success')}}
                                             </div>
                                         @endif
-
+                                        @if (session()->has('error'))
+                                            <div class="alert alert-danger">
+                                                {{ session()->get('error')}}
+                                            </div>
+                                        @endif
                                         <form action="/user_login" method="post">
                                             @csrf
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputName" type="text" name="name" placeholder="Username" />
+                                                <input class="form-control" id="inputName" type="text" name="name" placeholder="Username" />   
                                                 <label for="inputEmail">Username</label>
-                                            </div>
+                                                @if ($errors->has('name'))
+                                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                                @endif
+                                            </div>    
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Password" />
                                                 <label for="inputPassword">Password</label>
+                                                @if ($errors->has('password'))
+                                                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                                                @endif
                                             </div>
                                             <div class="form-check mb-3">
                                                 <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Biodata;
 use App\Models\Notif;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use PDF;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -22,8 +24,48 @@ class AdminController extends Controller
         return view('admin.manajemen_user')->with(compact('users'));
     }
 
+    
+    public function edit_user($id){
+        $user = User::where('id', $id)->first();
+        $role = Role::all();
+        return view('admin.edituser')->with(compact('user', 'role'));
+    }
+
+    public function update_user(Request $request)
+    {        
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required'
+        ],
+        [
+            'name.required' => 'Kolom Tidak Bolek Kosong',
+            'email.required' => 'Kolom Tidak Boleh Kosong',
+            'email.email' => 'Kolom harus dalam format email, contoh : yasin-assalam@gmail.com',
+            'password.required' => 'Kolom Tidak Boleh Kosong',    
+        ]);
+
+        $user = User::where('id', $request->id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'remember_token' => Str::random(60),
+            'role_id' => $request->role_id
+        ]);
+           
+        return redirect('manajemenuser')->with('success','Berhasil Terupdate');
+    }
+
+    public function delete_user($id)
+    {
+        $user = User::where('id', $id)->delete();
+        $biodata = Biodata::where('user_id', $id)->delete();
+
+        return redirect('manajemenuser')->with('success','Akun telah Terhapus');
+    }
+
     public function daftar_santri(){
-        $biodata = Biodata::all();
+        $biodata = Biodata::get();
 
         return view('admin.daftar_santri')->with(compact('biodata'));
     }
@@ -40,6 +82,7 @@ class AdminController extends Controller
 
         return redirect('daftarsantri')->with('success','Form telah Terhapus');
     }
+    
 
     public function cetak_pdf($id)
     {

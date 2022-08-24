@@ -16,7 +16,7 @@
                                 <a class="btn btn-secondary" href="/profile/{{auth()->user()->id}}"> Back</a>
                                 </div>
                             </div>
-                            <div class="body">
+                            <div class="panel-body">
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <strong>Whoops!</strong> There were some problems with your input.<br><br>

@@ -31,7 +31,6 @@
                                             {{ session()->get('success')}}
                                         </div>
                                     @endif
-                                        
                                     <div class="profile-info">
                                         <h4 class="heading">Basic Info</h4>
                                         <ul class="list-unstyled list-justify">
@@ -45,7 +44,7 @@
                                             <li>No Handphone <span>{{$user->biodata->no_hp}}</span></li></span></li>
                                         </ul>
                                     </div>
-                                    <div class="text-center"><a href="/edit_biodata/{{$user->biodata->user_id}}" class="btn btn-primary">Edit Profile</a></div>                                    
+                                    <div class="text-center"><a href="/edit_biodata/{{$user->biodata->id}}" class="btn btn-primary">Edit Profile</a></div>                                    
                                 </div>
                                 <!-- END PROFILE DETAIL -->
                             </div>

@@ -26,16 +26,22 @@ class ProfilController extends Controller
 
     public function create(Request $request)
     {
-        // $request->validate([
-        //     'full_name' => 'required',
-        //     'jenis_kelamin' => 'required',
-        //     'nik' => 'required',
-        //     'ttl' => 'required',
-        //     'alamat' => 'required',
-        //     'agama' => 'required',
-        //     'tempat_tinggal' => 'required',
-        //     'no_hp' => 'required',
-        // ]);
+        $request->validate([
+            'nama' => 'required',
+            'nik' => 'required',
+            'ttl' => 'required',
+            'alamat' => 'required',
+            'agama' => 'required',
+            'hp' => 'required'
+        ],
+        [
+            'nama.required' => 'Nama Lengkap Harus Diisi',
+            'nik.required' => 'NIK Harus Diisi',
+            'ttl.required' => 'Tempat Tanggal Lahir Harus Diisi',
+            'alamat.required' => 'Alamat Harus Diisi',
+            'agama.required' => 'Agama Harus Diisi',
+            'hp.required' => 'No Hp Harus Diisi',    
+        ]);
         
         Biodata::create([
             'user_id' => Auth::User()->id, 
@@ -59,12 +65,21 @@ class ProfilController extends Controller
 
     public function update_biodata(Request $request)
     {        
-        $request->validate([ 
+        $request->validate([
+            'nama' => 'required',
             'nik' => 'required',
             'ttl' => 'required',
             'alamat' => 'required',
             'agama' => 'required',
-            'tempat_tinggal' => 'required',
+            'hp' => 'required'
+        ],
+        [
+            'nama.required' => 'Nama Lengkap Harus Diisi',
+            'nik.required' => 'NIK Harus Diisi',
+            'ttl.required' => 'Tempat Tanggal Lahir Harus Diisi',
+            'alamat.required' => 'Alamat Harus Diisi',
+            'agama.required' => 'Agama Harus Diisi',
+            'hp.required' => 'No Hp Harus Diisi',    
         ]);
 
         $biodata = Biodata::where('id', $request->id)->update([
@@ -77,8 +92,10 @@ class ProfilController extends Controller
             'tempat_tinggal' => $request->tempat_tinggal,
             'no_hp' => $request->hp,
         ]);
-        
-        return redirect()->route('profile', auth()->user()->id)->with('success','Biodata telah terupdate');
+        if (Auth::User()->role_id == 1) {
+            return redirect('daftarsantri')->with('success','Berhasil Terupdate');
+        }
+        return redirect()->route('profile', auth()->user()->id)->with('success','Biodata Telah Terupdate');
     }
 
     public function edit_persyaratan($id){
@@ -98,6 +115,12 @@ class ProfilController extends Controller
             'kk'=>'nullable|mimes:pdf',
             'ktp'=>'nullable|mimes:jpeg,png,jpg,gif,svg,pdf',
             'sktm'=>'nullable|mimes:pdf',
+        ],[
+            'foto.mimes' => 'Format FIle Harus JPG/JPEG/PNG',
+            'akte.mimes' => 'Format FIle Harus PDF',
+            'kk.mimes' => 'Format FIle Harus PDF',
+            'ktp.mimes' => 'Format FIle Harus JPG/JPEG/PNG',
+            'sktm.mimes' => 'Format FIle Harus PDF'
         ]);
         
         $biodata = Biodata::where('id', $request->id)->first();

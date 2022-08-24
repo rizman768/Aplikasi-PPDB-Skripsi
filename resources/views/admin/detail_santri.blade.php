@@ -22,10 +22,11 @@
             </div>
             <div class="col-2">
                 <div class="text-end upgrade-btn">
-                    @if ( $biodata->user->notif == NULL)
+                    @if ( $biodata->status !== "Sudah Lengkap")
                         <form method="POST" action="/acc">
                             @csrf
-                            <input type="hidden" name="id" value="{{ $biodata->id }}">
+                            <input type="hidden" name="user_id" value="{{ $biodata->user_id }}">
+                            <input type="hidden" name="status" value="Sudah Lengkap">
                             <button type="submit" class="btn btn-success text-white">Sudah Lengkap</button>
                         </form>
                     @endif
@@ -50,9 +51,9 @@
                 <div class="card">
                     <div class="card-body">
                         <center class="m-t-30"> <img src="{{ $biodata->getFoto()}}" class="rounded-circle" width="150" />
-                            <h4 class="card-title m-t-10">Hanna Gover</h4>
-                            <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
-                            <div class="row text-center justify-content-md-center">
+                            <h4 class="card-title m-t-10">{{ $biodata->full_name}}</h4>
+                            <h6 class="card-subtitle">Calon Santri Baru</h6>
+                            {{-- <div class="row text-center justify-content-md-center">
                                 <div class="col-4"><a href="javascript:void(0)" class="link"><i
                                             class="icon-people"></i>
                                         <font class="font-medium">254</font>
@@ -61,7 +62,7 @@
                                             class="icon-picture"></i>
                                         <font class="font-medium">54</font>
                                     </a></div>
-                            </div>
+                            </div> --}}
                         </center>
                     </div>
                     <div>
