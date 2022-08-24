@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Biodata;
@@ -13,9 +14,9 @@ class AdminController extends Controller
 {
     public function index(){
         $user = User::count();
-        $notif = Notif::count();
+        $lengkap = Biodata::where('status', 'Sudah Lengkap')->count();
         $santri = Biodata::count();
-        return view('admin.admin_dashboard', compact('user', 'notif', 'santri'));
+        return view('admin.admin_dashboard', compact('user', 'lengkap', 'santri'));
     }
 
     public function manajemen_user(){
@@ -99,5 +100,17 @@ class AdminController extends Controller
 
         // mengambil data terakhir dan pagination 10 list
         return view('admin.daftar_santri',['biodata' => $biodata])->with('i', (request()->input('page', 1) - 1) * 10);
+    }
+
+    public function sendEmail(){
+        $user = User::where();
+        $details = [
+            'title' => 'Email from Pondok Yatim dan Dhuafa Yasin As-Salam',
+            'body' => 'This is for testing email using smtp'
+            ];
+           
+            \Mail::to('emailpenerima@gmail.com')->send(new \App\Mail\MyTestMail($details));
+           
+            dd("Email sudah terkirim.");
     }
 }

@@ -6,8 +6,8 @@ use App\Models\Notif;
 use App\Models\User;
 use App\Models\Biodata;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use App\Mail\MailNotify;
+use Illuminate\Support\Facades\Mail;
 
 class DashboardController extends Controller
 {
@@ -25,15 +25,20 @@ class DashboardController extends Controller
                 'user_id' => $request->user_id,
                 'persyaratan' => 1,
             ]);
-        $biodata = Biodata::where('user_id', $request->user_id)->update(['status' => $request->status]);    
-
+        $biodata = Biodata::where('user_id', $request->user_id)->update(['status' => $request->status]);  
+        
         // Notifikasi Email jika data sudah diverifikasi
-        $user = User::where('id', $request->user_id);
-        Mail::to($user->email)->send(new MailNotify($user->biodata->full_name)); 
+        $user = User::where('id', $request->user_id)->first();
+        $details = [
+            'title' => 'Email from Pondok Yatim dan Dhuafa Yasin As-Salam',
+            'body' => 'Verifikasi Data'
+            ];
+           
+            \Mail::to($user->email)->send(new \App\Mail\MailNotify($details));
+           
+            // dd("Email sudah terkirim.");
 
         return redirect('daftarsantri')->with('success','BERHASIL');
-
-           
     }
 
     public function daftar_santri(){

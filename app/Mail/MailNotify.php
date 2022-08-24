@@ -11,14 +11,15 @@ class MailNotify extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $details;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($details)
     {
-        //
+        $this->details = $details;
     }
 
     /**
@@ -28,6 +29,7 @@ class MailNotify extends Mailable
      */
     public function build()
     {
-        return $this->view('admin.verifikasidatalengkap');
+        return $this->subject('Data Anda sudah di Verifikasi')
+                    ->view('admin.verifikasidatalengkap');
     }
 }

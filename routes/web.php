@@ -32,7 +32,7 @@ Route::get('daftar-santri', [DashboardController::class, 'daftar_santri']);
 Route::get('search', [DashboardController::class, 'search']);
 Route::get('panduan', [DashboardController::class, 'panduan']);
 Route::get('tentang-pondok', [DashboardController::class, 'tentang_pondok']);
-
+Route::get('send', [DashboardController::class, 'send']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('profile/{id}', [ProfilController::class, 'biodata'])->name('profile');
@@ -56,6 +56,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('cari', [AdminController::class, 'search']);
         Route::post('deleteuser/{id}', [AdminController::class, 'delete']);
         Route::post('deletebiodata/{id}', [AdminController::class, 'delete_biodata']);
+        Route::post('deletebiodata/{id}', [AdminController::class, 'delete_biodata']);
+        
     });
 });
   

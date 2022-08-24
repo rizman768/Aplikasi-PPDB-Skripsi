@@ -30,9 +30,9 @@
 </head>
 <body>
     <div class="card">
-        <h3 class="">Data {{$full_name}} Sudah Lengkap</h3>
+        <h3 class="">Terima Kasih</h3>
         <hr class="garis">
-        <p>Data Anda Sudah Lengkap.</p>
+        <p>Data Anda Sudah Lengkap
         <h4>Silahkan Tunggu untuk Informasi Selanjutnya</h4>
     </div>
 </body>

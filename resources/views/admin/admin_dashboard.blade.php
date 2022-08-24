@@ -52,7 +52,7 @@
                         <h4 class="card-title">Sudah Lengkap Persyaratan</h4>
                         <div class="d-flex align-items-center flex-row m-t-30">
                             <div class="display-5 text-info"><i class="mdi mdi-account-check"></i>
-                                <span>{{ $notif }}</span></div>
+                                <span>{{ $lengkap }}</span></div>
                             <div class="m-l-10">
                                 <h3 class="m-b-0">Total</h3><small>yang sudah lengkap</small>
                             </div>
