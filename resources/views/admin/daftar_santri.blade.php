@@ -32,7 +32,7 @@
                                 {{ session()->get('success')}}
                             </div>
                         @endif  
-                        <table class="table table-striped">
+                        <table class="table table-striped table-responsive">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -41,7 +41,7 @@
                                     <th>Tempat, Tanggal Lahir</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Alamat</th>
-                                    <th>Status</th>
+                                    <th width="210px">Status</th>
                                     <th>Option</th>
                                 </tr>
                             </thead>
@@ -55,7 +55,11 @@
                                     <td>{{ $bio->ttl }}</td>
                                     <td>{{ $bio->jenis_kelamin}}</td>
                                     <td>{{ $bio->alamat }}</td>
-                                    <td>{{ $bio->status }}</td>
+                                    @if ($bio->status == "Sudah Lengkap")
+                                        <td><span class="label label-rounded label-success">{{ $bio->status }}</span></td>
+                                    @else
+                                        <td><span class="label label-rounded label-danger">{{ $bio->status }}</span></td>
+                                    @endif
                                     <td>
                                         <form action="/deletebiodata/{{$bio->id}}" method="POST">
                                             <a class="btn btn-info btn-sm" href="/detailsantri/{{$bio->id}}">Show</a>

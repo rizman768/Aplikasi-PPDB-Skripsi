@@ -101,16 +101,4 @@ class AdminController extends Controller
         // mengambil data terakhir dan pagination 10 list
         return view('admin.daftar_santri',['biodata' => $biodata])->with('i', (request()->input('page', 1) - 1) * 10);
     }
-
-    public function sendEmail(){
-        $user = User::where();
-        $details = [
-            'title' => 'Email from Pondok Yatim dan Dhuafa Yasin As-Salam',
-            'body' => 'This is for testing email using smtp'
-            ];
-           
-            \Mail::to('emailpenerima@gmail.com')->send(new \App\Mail\MyTestMail($details));
-           
-            dd("Email sudah terkirim.");
-    }
 }
