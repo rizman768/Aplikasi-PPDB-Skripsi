@@ -18,7 +18,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="{{asset('asset1/assets/img/apple-icon.png')}}">
-	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('asset1/assets/img/favicon.png')}}">
+	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('asset1/assets/img/logo-favicon.png')}}">
 </head>
 
 <body>
@@ -27,7 +27,7 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="/"><img src="{{asset('asset1/assets/img/logo-pondok.png')}}" width="179px" height="21px" alt="Klorofil Logo" class="img-responsive logo"></a>
+				<a href="/"><img src="{{asset('asset1/assets/img/logo.png')}}" width="60px" alt="Logo Pondok" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">

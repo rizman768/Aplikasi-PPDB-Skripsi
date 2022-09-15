@@ -20,7 +20,7 @@
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quibusdam modi inventore itaque? Magni, modi incidunt! Quia culpa, tenetur odit maxime, perspiciatis eaque laudantium officia alias excepturi nemo tempore molestias.</p>
+                                <p>Yasin As-Salam adalah Lembaga sosial dan Pendidikan Yang Bekerja Sama Dengan Banyak Pesantren Dan Rumah Yatim Di Kota Bandung, yang dikukuhkan dengan Akta Pendirian Notaris KUSNADI  Nomor 31 tertanggal 02 April 2021. Seiring waktu berjalan kami terus melakukan pembaharuan lembaga yang fokus untuk mengelola kegiatan Masyarakat & Yatim dan Dhuafa dengan nama lembaga Mutiara Yasin As-Salam.</p>
                             </div>
                             <div class="panel-footer">
                                 <center><a href="tentang-pondok">lihat selengkapnya</a></center>

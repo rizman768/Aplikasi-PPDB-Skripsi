@@ -14,17 +14,24 @@
         <!-- GOOGLE FONTS -->
 	    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     </head>
-    <body>  
-        <div class="col-xs-12">
+    <body>
+        <div class="col-xs-2">
+            <img src="{{asset('asset/assets/images/logoo.png')}}" style="width: 78px; height: 80px; float:left; margin:0 8px 4px 0;"/>
+        </div>  
+        <div class="col-xs-8">
             <div style="text-align:justify; margin-top: 20px">
-                <img src="{{asset('asset/assets/images/logo-icon.png')}}" style="width: 78px; height: 80px; float:left; margin:0 8px 4px 0;"/>
                 <p style="text-align: center; line-height: 20px">
                 <span style="font-size: 28px;"><strong>Pondok Yatim dan Dhuafa <br>Yasin As-salam</strong></span><br/>
-                <span style="font-size: 12px">Jalan Natawijaya No.9 Rw03 Kelurahan Pungkur, Kecamatan Regol, Kota Bandung, Jawa Barat, 40251</span><br/>
+                <span style="font-size: 12px">
+                    Sekretariat : Jalan Sindang Sari No. 4, Kel. Cipadung Kulon, Kota Bandung Jawa Barat, 40265 Telepon : 081278996085 Email :yayasanmutiarayasinassallam@gmail.com
+                </span>
                 </p>
             </div>
-            <div style="clear:both"><hr size="100px"></div><br/>
         </div>
+        <div class="col-xs-2">
+            <img src="{{asset('asset1/assets/img/logo.png')}}" style="width: 78px; height: 80px; float:right; margin:0 8px 4px 0;"/>
+        </div>
+        <div style="clear:both"><hr size="100px"></div><br/>
         <div class="col-xs-12">
             <h3 style="text-align:center;">FORM PENDAFTARAN {{ $biodata->full_name }}</h3>
         </div>

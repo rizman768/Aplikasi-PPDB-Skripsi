@@ -8,9 +8,9 @@
             <b class="logo-icon">
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                 <!-- Dark Logo icon -->
-                <img src="{{asset('asset/assets/images/logo-icon.png')}}" alt="homepage" class="dark-logo" />
+                <img src="{{asset('asset1/assets/img/logo-favicon.png')}}" alt="homepage" class="dark-logo" />
                 <!-- Light Logo icon -->
-                <img src="{{asset('asset/assets/images/logo-light-icon.png')}}" alt="homepage" class="light-logo" />
+                <img src="{{asset('asset1/assets/img/logo-favicon.png')}}" width="70px" alt="homepage" class="light-logo" />
             </b>
             <!--End Logo icon -->
             <!-- Logo text -->

@@ -14,7 +14,7 @@
     <title>Pondok Yatim & Dhuafa Yassin As-Salam</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/xtreme-admin-lite/" />
     <!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="16x16" href="{{asset('asset/assets/images/favicon.png')}}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{asset('asset1/assets/img/logo-favicon.png')}}">
     <!-- Custom CSS -->
 <link href="{{asset('asset/assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->

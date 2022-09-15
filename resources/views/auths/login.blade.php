@@ -8,6 +8,7 @@
         <meta name="author" content="" />
         <title>Login - Pondok Yatim dan Dhuafa Yasin As-Salam</title>
         <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
+        <link rel="icon" type="image/png" sizes="96x96" href="{{asset('asset1/assets/img/logo-favicon.png')}}">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">
@@ -19,7 +20,7 @@
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header">
-                                        <div class="logo text-center my-4"><a href="/"><img src="{{asset('asset1/assets/img/logo-pondok.png')}}" width="209px" height="41px" alt="Logo Viana" class="img-responsive logo" width="200"></a></div>
+                                        <div class="logo text-center my-4"><a href="/"><img src="{{asset('asset1/assets/img/logo.png')}}" width="150px"  alt="Logo Viana" class="img-responsive logo" width="200"></a></div>
                                         <h3 class="text-center font-weight-light my-4">Login</h3>
                                     </div>
                                     <div class="card-body">
