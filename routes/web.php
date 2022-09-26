@@ -57,7 +57,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('deleteuser/{id}', [AdminController::class, 'delete']);
         Route::post('deletebiodata/{id}', [AdminController::class, 'delete_biodata']);
         Route::get('report', [AdminController::class, 'report']);
-        Route::get('cetak-laporan', [AdminController::class, 'cetak_laporan']);
+        Route::get('cetak-laporan/{tahun}', [AdminController::class, 'cetak_laporan']);
+        Route::get('tampil-cetak', [AdminController::class, 'tampil_cetak']);
     });
 });
   

@@ -48,7 +48,41 @@
                                   <button class="btn btn-success" type="submit">Cari</button>
                                 </div>
                             </form>
-                        </div>        
+                        </div>
+                            <div class="text-end upgrade-btn">
+                                <a href="cetak-laporan/{{$tahun}}" target="_black" class="btn btn-danger text-white ">Cetak</a>
+                           </div>
+                        <table class="table table-striped table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>NIK</th>
+                                    <th>Full Name</th>
+                                    <th>Tempat, Tanggal Lahir</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Alamat</th>
+                                    <th width="210px">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i=0 ?>
+                                    @foreach ( $laporan_tahun as $bio )
+                                        <tr>
+                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $bio->nik }}</td>
+                                            <td>{{ $bio->full_name }}</td>
+                                            <td>{{ $bio->ttl }}</td>
+                                            <td>{{ $bio->jenis_kelamin}}</td>
+                                            <td>{{ $bio->alamat }}</td>
+                                            @if ($bio->status == "Sudah Lengkap")
+                                                <td><span class="label label-rounded label-success">{{ $bio->status }}</span></td>
+                                            @else
+                                                <td><span class="label label-rounded label-danger">{{ $bio->status }}</span></td>
+                                            @endif
+                                        </tr>
+                                    @endforeach
+                            </tbody>
+                        </table>            
                     </div>
                 </div>
             </div>

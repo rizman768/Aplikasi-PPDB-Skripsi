@@ -102,22 +102,28 @@ class AdminController extends Controller
         return view('admin.daftar_santri',['biodata' => $biodata])->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
-    public function report(Request $request){
+    public function report(){
+        
+        return view('admin.report');
+    }
+
+    public function tampil_cetak(Request $request){
         // $bulan = date('m',strtotime($request->bulan));
-        $tahun = date('Y',strtotime($request->tahun));
+        $tahun = $request->tahun;
 
         // $laporan_bulan = Biodata::whereMonth('created_at', $bulan)->whereYear('created_at', date('Y'))->get();
         // $laporan = Biodata::whereMonth('created_at', $bulan)->whereYear('created_at', $tahun)->get();
-        $laporan_tahun = Biodata::whereYear('created_at', $tahun)->get();
-        return view('admin.report',compact('laporan_tahun', 'tahun'));
+        $laporan_tahun = Biodata::whereYear('created_at', $request->tahun)->get();
+        return view('admin.tampil_cetak',compact('laporan_tahun', 'tahun'));
     }
 
-    public function cetak_laporan(Request $request)
+    public function cetak_laporan($tahun)
     {
         // $bulan = date('m',strtotime($request->bulan));
-        $tahun = date('Y',strtotime($request->tahun));
+        // $tahun = date('Y',strtotime($request->tahun));
+        // $tahun = $request->tahun;
         
         $laporan_tahun = Biodata::whereYear('created_at', $tahun)->get();
-        return view('admin.cetak_laporan', compact('laporan_tahun'));
+        return view('admin.cetak_laporan', compact('laporan_tahun', 'tahun'));
     }
 }
