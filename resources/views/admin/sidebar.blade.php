@@ -32,9 +32,10 @@
                 {{-- <li class="p-15 m-t-10"><a href="javascript:void(0)" class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center"><i class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Create New</span> </a> --}}
                 </li>
                 <!-- User Profile-->
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="admin-dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin-dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manajemenuser" aria-expanded="false"><i class="mdi mdi-account-network"></i><span class="hide-menu">Daftar User</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/daftarsantri" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Daftar Calon Santri</span></a></li>            
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/daftarsantri" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Daftar Calon Santri</span></a></li>       
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/report" aria-expanded="false"><i class="mdi mdi-printer-3d"></i><span class="hide-menu">Report</span></a></li>        
             </ul>
 
         </nav>

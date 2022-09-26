@@ -37,7 +37,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>NIK</th>
-                                    <th>Full Name</th>
+                                    <th>Nama Lengkap</th>
                                     <th>Tempat, Tanggal Lahir</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Alamat</th>

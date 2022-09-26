@@ -51,11 +51,11 @@ class DashboardController extends Controller
 
     public function search(Request $request){
         $cari = $request->cari;
-        $santri = Biodata::where('full_name', 'like', "%".$request->cari."%")->paginate();
+        $santri = Biodata::where('full_name', 'like', "%".$request->cari."%")->orWhere('nik', 'like', "%" . $request->cari. "%")->paginate();
 
-        if (Auth::check()) {
-            return view('user.daftar_santri',['santri' => $santri])->with('i', (request()->input('page', 1) - 1) * 10);
-        }
+        // if (Auth::check()) {
+        //     return view('dashboard.daftar_santri',['santri' => $santri])->with('i', (request()->input('page', 1) - 1) * 10);
+        // }
         // mengambil data terakhir dan pagination 10 list
         return view('dashboard.daftar_santri',['santri' => $santri])->with('i', (request()->input('page', 1) - 1) * 10);
     }

@@ -96,9 +96,28 @@ class AdminController extends Controller
 
     public function search(Request $request){
         $cari = $request->cari;
-        $biodata = Biodata::where('full_name', 'like', "%".$request->cari."%")->paginate();
+        $biodata = Biodata::where('full_name', 'like', "%".$request->cari."%")->orWhere('nik', 'like', "%" . $request->cari. "%")->paginate();
 
         // mengambil data terakhir dan pagination 10 list
         return view('admin.daftar_santri',['biodata' => $biodata])->with('i', (request()->input('page', 1) - 1) * 10);
+    }
+
+    public function report(Request $request){
+        // $bulan = date('m',strtotime($request->bulan));
+        $tahun = date('Y',strtotime($request->tahun));
+
+        // $laporan_bulan = Biodata::whereMonth('created_at', $bulan)->whereYear('created_at', date('Y'))->get();
+        // $laporan = Biodata::whereMonth('created_at', $bulan)->whereYear('created_at', $tahun)->get();
+        $laporan_tahun = Biodata::whereYear('created_at', $tahun)->get();
+        return view('admin.report',compact('laporan_tahun', 'tahun'));
+    }
+
+    public function cetak_laporan(Request $request)
+    {
+        // $bulan = date('m',strtotime($request->bulan));
+        $tahun = date('Y',strtotime($request->tahun));
+        
+        $laporan_tahun = Biodata::whereYear('created_at', $tahun)->get();
+        return view('admin.cetak_laporan', compact('laporan_tahun'));
     }
 }
