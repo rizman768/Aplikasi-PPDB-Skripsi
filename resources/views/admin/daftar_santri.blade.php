@@ -48,29 +48,31 @@
                             <tbody>
                                 <?php $i=0 ?>
                                 @foreach ( $biodata as $bio )
-                                <tr>
-                                    <td>{{ ++$i }}</td>
-                                    <td>{{ $bio->nik }}</td>
-                                    <td>{{ $bio->full_name }}</td>
-                                    <td>{{ $bio->ttl }}</td>
-                                    <td>{{ $bio->jenis_kelamin}}</td>
-                                    <td>{{ $bio->alamat }}</td>
-                                    @if ($bio->status == "Sudah Lengkap")
-                                        <td><span class="label label-rounded label-success">{{ $bio->status }}</span></td>
-                                    @else
-                                        <td><span class="label label-rounded label-danger">{{ $bio->status }}</span></td>
+                                    @if($bio->user->role_id == "2")
+                                        <tr>
+                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $bio->nik }}</td>
+                                            <td>{{ $bio->full_name }}</td>
+                                            <td>{{ $bio->ttl }}</td>
+                                            <td>{{ $bio->jenis_kelamin}}</td>
+                                            <td>{{ $bio->alamat }}</td>
+                                            @if ($bio->status == "Sudah Lengkap")
+                                                <td><span class="label label-rounded label-success">{{ $bio->status }}</span></td>
+                                            @else
+                                                <td><span class="label label-rounded label-danger">{{ $bio->status }}</span></td>
+                                            @endif
+                                            <td>
+                                                <form action="/deletebiodata/{{$bio->id}}" method="POST">
+                                                    <a class="btn btn-info btn-sm" href="/detailsantri/{{$bio->id}}">Show</a>
+                                                    <a class="btn btn-primary btn-sm" href="/edit_biodata/{{$bio->id}}">Edit</a>
+
+                                                    @csrf
+
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
                                     @endif
-                                    <td>
-                                        <form action="/deletebiodata/{{$bio->id}}" method="POST">
-                                            <a class="btn btn-info btn-sm" href="/detailsantri/{{$bio->id}}">Show</a>
-                                            <a class="btn btn-primary btn-sm" href="/edit_biodata/{{$bio->id}}">Edit</a>
-
-                                            @csrf
-
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
                                 @endforeach
                             </tbody>
                         </table>            
